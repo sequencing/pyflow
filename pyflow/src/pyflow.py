@@ -777,8 +777,10 @@ if __name__ == '__main__' :
 """ % (taskInfoFileName, taskStateFileName, workflowClassName))
 
     dsfp.close()
-    os.chmod(taskDotScriptFile, 0755)
-
+    try:
+        os.chmod(taskDotScriptFile, 0755)
+    except OSError:
+        sys.stderr.write("OSError in trying to change permissions for taskDotScriptFile")
 
 
 ################################################################
